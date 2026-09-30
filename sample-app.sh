@@ -12,11 +12,11 @@ printf '%s\n' 'RUN pip install flask' >> tempdir/Dockerfile
 printf '%s\n' 'COPY ./static /home/myapp/static/' >> tempdir/Dockerfile
 printf '%s\n' 'COPY ./templates /home/myapp/templates/' >> tempdir/Dockerfile
 printf '%s\n' 'COPY sample_app.py /home/myapp/' >> tempdir/Dockerfile
-printf '%s\n' 'EXPOSE 8080' >> tempdir/Dockerfile
+printf '%s\n' 'EXPOSE 5050' >> tempdir/Dockerfile
 printf '%s\n' 'CMD ["python3", "/home/myapp/sample_app.py"]' >> tempdir/Dockerfile
 
 cd tempdir
 docker build -t sampleapp .
 docker rm -f samplerunning 2>/dev/null || true
-docker run -t -d -p 8080:8080 --name samplerunning sampleapp
+docker run -t -d -p 5050:5050 --name samplerunning sampleapp
 docker ps -a
